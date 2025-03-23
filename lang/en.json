@@ -1,41 +1,84 @@
 {
   "ANTIKA_V2": {
+    "LOCALIZATION_PREFIXES": {
+      "abilities": "ANTIKA_V2.Ability",
+      "items": "ANTIKA_V2.Item",
+      "effects": "ANTIKA_V2.Effect"
+    },
+
     "Ability": {
-      "Str": { "long": "Strength", "abbr": "str" },
-      "Con": { "long": "Constitution", "abbr": "con" },
-      "Dex": { "long": "Dexterity", "abbr": "dex" },
-      "Int": { "long": "Intelligence", "abbr": "int" },
-      "Wis": { "long": "Wisdom", "abbr": "wis" },
-      "Cha": { "long": "Charisma", "abbr": "cha" }
+      "Soma":     { "long": "Soma",     "abbr": "SOM" },
+      "Sophos":   { "long": "Sophos",  "abbr": "SOP" },
+      "Symbiose": { "long": "Symbiose","abbr": "SYM" }
     },
+
     "SheetLabels": {
-      "Actor": "AntikaV2 Actor Sheet",
-      "Item": "AntikaV2 Item Sheet"
+      "Actor": "Character Sheet (Antika V2)",
+      "Item":  "Item Sheet (Antika V2)"
     },
+
     "Item": {
-      "Spell": {
-        "SpellLVL": "Level {level} Spells",
-        "AddLVL": "Add LVL {level}"
+      "Arme": {
+        "label":      "Weapon",
+        "range":      "Ranged",
+        "melee":      "Melee",
+        "damage":     "Damage",
+        "subtype":    "Category (slashing, piercing, bludgeoning...)",
+        "attackDice": "Attack Dice",
+        "notes":      "Notes"
+      },
+      "Armure": {
+        "label":       "Armor",
+        "armorValue":  "Protection (AP)",
+        "penalty":     "Penalty",
+        "notes":       "Notes"
+      },
+      "Bouclier": {
+        "label":       "Shield",
+        "shieldDice":  "Defense Dice",
+        "shieldBonus": "Parry Bonus",
+        "notes":       "Notes"
+      },
+      "Pouvoir": {
+        "PMCost":     "Cost (PM)",
+        "FDBase":     "Base FD",
+        "HubrisCost": "Hubris Cost",
+        "Effect":     "Power Effect",
+        "Duration":   "Duration",
+        "Save":       "Save",
+        "notes":      "Notes"
+      },
+      "Aptitude": {
+        "label":       "Aptitude",
+        "description": "Description"
+      },
+      "Objet": {
+        "label":       "Item",
+        "description": "Description"
       }
     },
+
     "Effect": {
-      "Source": "Source",
-      "Toggle": "Toggle Effect",
+      "Source":    "Source",
+      "Toggle":    "Activate/Deactivate Effect",
       "Temporary": "Temporary Effects",
-      "Passive": "Passive Effects",
-      "Inactive": "Inactive Effects"
+      "Passive":   "Passive Effects",
+      "Inactive":  "Inactive Effects"
     }
   },
 
   "TYPES": {
     "Actor": {
       "character": "Character",
-      "npc": "NPC"
+      "npc":       "NPC"
     },
     "Item": {
-      "item": "Item",
-      "feature": "Feature",
-      "spell": "Spell"
+      "arme":     "Weapon",
+      "armure":   "Armor",
+      "bouclier": "Shield",
+      "pouvoir":  "Power",
+      "aptitude": "Aptitude",
+      "objet":    "Item"
     }
   }
 }

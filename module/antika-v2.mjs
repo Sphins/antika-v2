@@ -10,6 +10,9 @@ import { ANTIKA_V2 } from './helpers/config.mjs';
 // Import DataModel classes
 import * as models from './data/_module.mjs';
 
+console.log("🔍 Vérification de ANTIKA_V2 : ", ANTIKA_V2);
+console.log("🔍 LOCALIZATION_PREFIXES : ", ANTIKA_V2.LOCALIZATION_PREFIXES);
+
 /* -------------------------------------------- */
 /*  Init Hook                                   */
 /* -------------------------------------------- */
@@ -31,9 +34,11 @@ Hooks.once('init', function () {
    * @type {String}
    */
   CONFIG.Combat.initiative = {
-    formula: '1d20 + @abilities.dex.mod',
-    decimals: 2,
+    formula: "@competences.strategie.value}d10 + @abilities.sophos.value",
+    decimals: 0,
   };
+
+
 
   // Define custom Document and DataModel classes
   CONFIG.Actor.documentClass = AntikaV2Actor;
@@ -47,9 +52,12 @@ Hooks.once('init', function () {
   }
   CONFIG.Item.documentClass = AntikaV2Item;
   CONFIG.Item.dataModels = {
-    item: models.AntikaV2Item,
-    feature: models.AntikaV2Feature,
-    spell: models.AntikaV2Spell
+    arme: models.AntikaV2Arme,
+    armure: models.AntikaV2Armure,
+    bouclier: models.AntikaV2Bouclier,
+    pouvoir: models.AntikaV2Pouvoir,
+    aptitude: models.AntikaV2Aptitude,
+    objet: models.AntikaV2Objet
   }
 
   // Active Effects are never copied to the Actor,

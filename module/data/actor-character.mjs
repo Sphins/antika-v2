@@ -2,51 +2,33 @@ import AntikaV2ActorBase from "./base-actor.mjs";
 
 export default class AntikaV2Character extends AntikaV2ActorBase {
 
+  static localizationPrefix = "ANTIKA_V2";
+
   static defineSchema() {
     const fields = foundry.data.fields;
     const requiredInteger = { required: true, nullable: false, integer: true };
     const schema = super.defineSchema();
 
-    schema.attributes = new fields.SchemaField({
-      level: new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 1 })
-      }),
+    // 🎭 Niveau du personnage (spécifique aux personnages)
+    schema.level = new fields.SchemaField({
+      value: new fields.NumberField({ ...requiredInteger, initial: 1, min: 1 })
     });
-
-    // Iterate over ability names and create a new SchemaField for each.
-    schema.abilities = new fields.SchemaField(Object.keys(CONFIG.ANTIKA_V2.abilities).reduce((obj, ability) => {
-      obj[ability] = new fields.SchemaField({
-        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
-      });
-      return obj;
-    }, {}));
 
     return schema;
   }
 
   prepareDerivedData() {
-    // Loop through ability scores, and add their modifiers to our sheet output.
-    for (const key in this.abilities) {
-      // Calculate the modifier using d20 rules.
-      this.abilities[key].mod = Math.floor((this.abilities[key].value - 10) / 2);
-      // Handle ability label localization.
-      this.abilities[key].label = game.i18n.localize(CONFIG.ANTIKA_V2.abilities[key]) ?? key;
-    }
+    super.prepareDerivedData(); // On conserve la logique des valeurs dérivées de la base
+
+    // Ici, on pourrait ajouter des calculs spécifiques aux Personnages Joueurs (exemple futur)
   }
 
   getRollData() {
-    const data = {};
+    const data = super.getRollData();
 
-    // Copy the ability scores to the top level, so that rolls can use
-    // formulas like `@str.mod + 4`.
-    if (this.abilities) {
-      for (let [k,v] of Object.entries(this.abilities)) {
-        data[k] = foundry.utils.deepClone(v);
-      }
-    }
+    // 📊 Ajout du niveau pour les jets spécifiques aux personnages joueurs
+    data.lvl = this.level.value;
 
-    data.lvl = this.attributes.level.value;
-
-    return data
+    return data;
   }
 }

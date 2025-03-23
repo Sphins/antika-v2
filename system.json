@@ -4,18 +4,14 @@
   "description": "The Antika V2 system for FoundryVTT!",
   "authors": [
     {
-      "name": "Asacolips",
-      "discord": "asacolips"
-    },
-    {
-      "name": "Lee Talman",
-      "discord": ".pizzaWizard"
+      "name": "Sphins",
+      "discord": "Sphins#5448"
     }
   ],
-  "url": "Replace this with a link to your public repository",
+  "url": "https://github.com/Sphins/antika-v2.git",
   "license": "LICENSE.txt",
   "readme": "README.md",
-  "bugs": "Replace this with a link to file issues or tickets",
+  "bugs": "https://github.com/Sphins/antika-v2/issues",
   "changelog": "CHANGELOG.md",
   "media": [
     {
@@ -24,10 +20,10 @@
       "thumbnail": "systems/antika-v2/assets/anvil-impact.png"
     }
   ],
-  "version": "2.0.0",
+  "version": "2.0.3",
   "compatibility": {
-    "minimum": 11,
-    "verified": "11.315"
+    "minimum": 12,
+    "verified": "12.331"
   },
   "esmodules": ["module/antika-v2.mjs"],
   "styles": ["css/antika-v2.css"],
@@ -36,16 +32,23 @@
       "lang": "en",
       "name": "English",
       "path": "lang/en.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Francais",
+      "path": "lang/fr.json"
     }
   ],
   "packs": [],
   "packFolders": [],
   "socket": false,
-  "manifest": "Replace this with a link to the /latest release system.json so people can receive updates after they've installed the system",
-  "download": "This must link to a .zip file of the current version",
+  "manifest": "https://github.com/Sphins/antika-v2/releases/latest/download/system.json",
+  "download": "https://github.com/Sphins/antika-v2/releases/latest/download/antika-v2.zip",
   "background": "systems/antika-v2/assets/anvil-impact.png",
-  "gridDistance": 5,
-  "gridUnits": "ft",
-  "primaryTokenAttribute": "health",
-  "secondaryTokenAttribute": "power"
+"grid": {
+  "distance": 1,
+  "units": "m"
+},
+  "primaryTokenAttribute": "pv",
+  "secondaryTokenAttribute": "pm"
 }

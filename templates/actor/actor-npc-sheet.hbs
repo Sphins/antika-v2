@@ -5,38 +5,70 @@
     <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
     <div class="header-fields">
       <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
-      {{!-- The grid classes are defined in scss/global/_grid.scss. To use,
-      use both the "grid" and "grid-Ncol" class where "N" can be any number
-      from 1 to 12 and will create that number of columns.  --}}
+
+      {{!-- Ressources Principales --}}
       <div class="resources grid grid-3col">
 
-        {{!-- "flex-group-center" is also defined in the _grid.scss file
-        and it will add a small amount of padding, a border, and will
-        center all of its child elements content and text. --}}
+        {{!-- Points de Vie (PV) --}}
         <div class="resource flex-group-center">
-          <label for="system.health.value" class="resource-label">Health</label>
+          <label for="system.pv.value" class="resource-label">Points de Vie</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.health.value" value="{{system.health.value}}" data-dtype="Number"/>
+            <input type="text" name="system.pv.value" value="{{system.pv.value}}" data-dtype="Number"/>
             <span> / </span>
-            <input type="text" name="system.health.max" value="{{system.health.max}}" data-dtype="Number"/>
+            <input type="text" name="system.pv.max" value="{{system.pv.max}}" data-dtype="Number"/>
           </div>
         </div>
 
+        {{!-- Points de Miracle (PM) --}}
         <div class="resource flex-group-center">
-          <label for="system.power.value" class="resource-label">Power</label>
+          <label for="system.pm.value" class="resource-label">Points de Miracle</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.power.value" value="{{system.power.value}}" data-dtype="Number"/>
+            <input type="text" name="system.pm.value" value="{{system.pm.value}}" data-dtype="Number"/>
             <span> / </span>
-            <input type="text" name="system.power.max" value="{{system.power.max}}" data-dtype="Number"/>
+            <input type="text" name="system.pm.max" value="{{system.pm.max}}" data-dtype="Number"/>
           </div>
         </div>
 
+        {{!-- Niveau --}}
         <div class="resource flex-group-center">
-          <label for="system.cr" class="resource-label">CR / XP</label>
+          <label for="system.level.value" class="resource-label">Niveau</label>
           <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.cr" value="{{system.cr}}" data-dtype="Number"/>
+            <input type="text" name="system.level.value" value="{{system.level.value}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+      </div>
+
+      {{!-- Ressources Secondaires --}}
+      <div class="resources grid grid-3col">
+
+        {{!-- Aristéia --}}
+        <div class="resource flex-group-center">
+          <label for="system.resources.aristeia.value" class="resource-label">Aristéia</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.resources.aristeia.value" value="{{system.resources.aristeia.value}}" data-dtype="Number"/>
             <span> / </span>
-            <input type="text" disabled="true" name="system.xp" value="{{system.xp}}" data-dtype="Number"/>
+            <input type="text" name="system.resources.aristeia.max" value="{{system.resources.aristeia.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        {{!-- Hubris --}}
+        <div class="resource flex-group-center">
+          <label for="system.resources.hubris.value" class="resource-label">Hubris</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.resources.hubris.value" value="{{system.resources.hubris.value}}" data-dtype="Number"/>
+            <span> / </span>
+            <input type="text" name="system.resources.hubris.max" value="{{system.resources.hubris.max}}" data-dtype="Number"/>
+          </div>
+        </div>
+
+        {{!-- Némésis --}}
+        <div class="resource flex-group-center">
+          <label for="system.resources.nemesis.value" class="resource-label">Némésis</label>
+          <div class="resource-content flexrow flex-center flex-between">
+            <input type="text" name="system.resources.nemesis.value" value="{{system.resources.nemesis.value}}" data-dtype="Number"/>
+            <span> / </span>
+            <input type="text" name="system.resources.nemesis.max" value="{{system.resources.nemesis.max}}" data-dtype="Number"/>
           </div>
         </div>
 
@@ -44,33 +76,42 @@
     </div>
   </header>
 
-  {{!-- Sheet Tab Navigation --}}
+  {{!-- Navigation des onglets --}}
   <nav class="sheet-tabs tabs" data-group="primary">
-    {{!-- Default tab is specified in actor-sheet.mjs --}}
+    <a class="item" data-tab="features">Aptitudes</a>
     <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="items">Items</a>
-    <a class="item" data-tab="effects">Effects</a>
+    <a class="item" data-tab="items">Équipement</a>
+    <a class="item" data-tab="spells">Pouvoirs</a>
+    <a class="item" data-tab="effects">Effets</a>
   </nav>
 
-  {{!-- Sheet Body --}}
+  {{!-- Corps de la fiche --}}
   <section class="sheet-body">
 
-    {{!-- Biography Tab --}}
+    {{!-- Aptitudes --}}
+    <div class="tab features" data-group="primary" data-tab="features">
+      {{> "systems/antika-v2/templates/actor/parts/actor-features.hbs"}}
+    </div>
+
+    {{!-- Description --}}
     <div class="tab biography" data-group="primary" data-tab="description">
-      {{!-- Editors must receive enriched text data from getData to properly handle rolls --}}
       {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
     </div>
 
-    {{!-- Owned Items Tab --}}
+    {{!-- Équipement --}}
     <div class="tab items" data-group="primary" data-tab="items">
-       {{> "systems/antika-v2/templates/actor/parts/actor-items.hbs"}}
+      {{> "systems/antika-v2/templates/actor/parts/actor-items.hbs"}}
     </div>
 
-    {{!-- Active Effects Tab --}}
+    {{!-- Pouvoirs --}}
+    <div class="tab spells" data-group="primary" data-tab="spells">
+      {{> "systems/antika-v2/templates/actor/parts/actor-spells.hbs"}}
+    </div>
+
+    {{!-- Effets actifs --}}
     <div class="tab effects flexcol" data-group="primary" data-tab="effects">
       {{> "systems/antika-v2/templates/actor/parts/actor-effects.hbs"}}
     </div>
 
   </section>
 </form>
-

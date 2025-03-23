@@ -1,82 +1,58 @@
-# AntikaV2 System
+# Antika V2 – Foundry VTT System
 
-![Foundry v11](https://img.shields.io/badge/foundry-v11-green)
+Ce dépôt propose un **système de jeu “Antika V2”** pour Foundry VTT, librement adapté à partir du boilerplate “Simple System” (et de ses dérivés). Il a pour objectif de reproduire et d’automatiser au mieux les règles d’Antika V2, un jeu de rôle épique se déroulant dans la Grèce mycénienne, tout en bénéficiant des dernières fonctionnalités de Foundry (DataModel, etc.).
 
-This system is a antika-v2 system that you can use as a starting point for building your own custom systems. It's similar to Simple World-building, but has examples of creating attributes in code rather than dynamically through the UI.
+## Sommaire
+- [Antika V2 – Foundry VTT System](#antika-v2--foundry-vtt-system)
+  - [Sommaire](#sommaire)
+  - [Présentation du système](#présentation-du-système)
+  - [Installation](#installation)
+  - [Démarche de développement](#démarche-de-développement)
+    - [Architecture principale](#architecture-principale)
+    - [Compilation SCSS](#compilation-scss)
 
-## Usage
+---
 
-There are two ways to get started: using the AntikaV2 system generator command or manually renaming and updating files.
+## Présentation du système
 
-Regardless of which method you choose, think carefully about your system's name. Your system's package name when submitted to Foundry must be formatted like `alphanumeric-lowercase`, and it must be unique. Check the Foundry systems package list for conflicts before committing to a name!
+Antika est un jeu de rôle se déroulant dans l’univers de la Grèce antique et mythique, combinant épopée, tragédie et actes héroïques. Les personnages y sont des héros, descendants d’humains ou de divinités, parcourant l’Oikouménè mycénienne autour de 1300 avant notre ère.  
+Ce **système Foundry VTT** intègre :
 
-> **Data Models**
->
-> If you would like to use DataModel classes instead of the older template.json configuration, you'll need to use the `npm run generate` command described below and choose to enable them when asked. DataModels are currently an optional feature, and are only availabe in the generator CLI due to that.
+- **Caractéristiques** (Soma, Sophos, Symbiose)  
+- **Mécaniques spécifiques** (Aristéia, Hubris, Némésis)  
+- **Système de compétences**  
+- **Gestion du combat**  
+- **Feuilles d’Acteurs** (PJ, PNJ)  
+- **Feuilles d’Objets** (Armes, Équipements, etc.)  
+- Etc.
 
-### Generator
+Le système est construit sur la base du **boilerplate “Simple System”** mis à disposition par la communauté Foundry, et utilise les dernières possibilités (DataModel) offertes par Foundry **v12**.
 
-This system includes a generator CLI in `package.json`. To use it, you must have [node.js](https://nodejs.org) installed, and it's recommended that you install node 20 or later.
+---
 
-> **Python Generator**
-> 
-> If you would rather use Python than node, there’s an excellent Python-based generator created by Cussa at https://github.com/Cussa/fvtt-antika-v2-initializator. Give it a shot!
+## Installation
 
-Once you have npm installed, you can run the following in your terminal or command prompt:
+1. **Copier** ce dossier dans le répertoire `Data/systems/` de Foundry VTT.  
+   - Le dossier **doit** s’appeler `antika-v2` si le champ `"name"` dans `system.json` est `antika-v2`.
+2. **Redémarrer** Foundry.  
+3. Dans la configuration de votre Monde, **choisir “Antika V2”** comme système.  
 
+*(Optionnel)* : Si tu préfères cloner ce dépôt dans un répertoire séparé, tu peux créer un **lien symbolique** (symlink) vers `Data/systems/antika-v2`.
+
+---
+
+## Démarche de développement
+
+Ce système a été créé via le **boilerplate** contenant un script `generate`, puis adapté pour correspondre aux règles Antika V2 (notamment l’utilisation de l’**Aristéia**, de l’**Hubris**, et les spécificités de l’univers mycénien).  
+
+### Architecture principale
+- **`system.json`** : Manifest Foundry (nom du système, version, compatibilité).  
+- **`module/*`** : Scripts JavaScript/TypeScript, gestion du DataModel, définition des classes (Actors, Items…).  
+- **`templates/*`** : Templates HTML pour les fiches de personnages, d’objets, etc.  
+- **`styles/*`** : Feuilles CSS/SCSS.  
+
+### Compilation SCSS
+Si tu souhaites personnaliser le thème (couleurs, layout, etc.) :  
 ```bash
 npm install
-npm run generate
-```
-
-Your terminal should prompt you to name your system. Read the instructions carefully, the letter case and special characters in each question matter for correct system generation.
-
-Once the generator completes, it will output your system to `build/<your-system-name>`, where `<your-system-name>` is the package name you supplied during the prompt.
-
-Copy this directory over to your Foundry systems directory and start coding!
-
-### Manual Replacement
-
-Before installing this system, you should rename any files that have `antika-v2` in their filename to use whatever machine-safe name your system needs, such as `adnd2e` if you were building a system for 2nd edition Advanced Dungeons & Dragons. In addition, you should search through the files for `antika-v2` and `AntikaV2` and do the same for those, replacing them with appropriate names for your system.
-
-The `name` property in your `system.json` file is your system's package name. This need to be formatted `alphanumeric-lowercase`, and it must also match the foldername you use for your system.
-
-### Vue 3 AntikaV2
-
-**NOTE: The Vue 3 version is currently outdated and considered an advanced usage of Foundry due to it being a custom renderer. Only try it out if you _really_ like Vue and are feeling dangerous!**
-
-Alternatively, there's another build of this system that supports using Vue 3 components (ES module build target) for character sheet templates.
-
-Head over to the [Vue3AntikaV2 System](https://gitlab.com/asacolips-projects/foundry-mods/vue3antika-v2) repo if you're interested in using Vue!
-
-### Getting Help
-
-Check out the [Official Foundry VTT Discord](https://discord.gg/foundryvtt)! The #system-development channel has helpful pins and is a good place to ask questions about any part of the foundry application.
-
-For more static references, the [Knowledge Base](https://foundryvtt.com/kb/) and [API Documentation](https://foundryvtt.com/api/) provide different levels of detail. For the most detail, you can find the client side code in your foundry installation location. Classes are documented in individual files under `resources/app/client` and `resources/app/common`, and the code is collated into a single file at `resources/app/public/scripts/foundry.js`.
-
-#### Tutorial
-
-For much more information on how to use this system as a starting point for making your own, see the [full tutorial on the Foundry Wiki](https://foundryvtt.wiki/en/development/guides/SD-tutorial)!
-
-Note: Tutorial may be out of date, so look out for the Foundry compatibility badge at the top of each page.
-
-## Sheet Layout
-
-This system includes a handful of helper CSS classes to help you lay out your sheets if you're not comfortable diving into CSS fully. Those are:
-
-- `flexcol`: Included by Foundry itself, this lays out the child elements of whatever element you place this on vertically.
-- `flexrow`: Included by Foundry itself, this lays out the child elements of whatever element you place this on horizontally.
-- `flex-center`: When used on something that's using flexrow or flexcol, this will center the items and text.
-- `flex-between`: When used on something that's using flexrow or flexcol, this will attempt to place space between the items. Similar to "justify" in word processors.
-- `flex-group-center`: Add a border, padding, and center all items.
-- `flex-group-left`: Add a border, padding, and left align all items.
-- `flex-group-right`: Add a border, padding, and right align all items.
-- `grid`: When combined with the `grid-Ncol` classes, this will lay out child elements in a grid.
-- `grid-Ncol`: Replace `N` with any number from 1-12, such as `grid-3col`. When combined with `grid`, this will layout child elements in a grid with a number of columns equal to the number specified.
-
-## Compiling the CSS
-
-This repo includes both CSS for the theme and SCSS source files. If you're new to CSS, it's probably easier to just work in those files directly and delete the SCSS directory. If you're interested in using a CSS preprocessor to add support for nesting, variables, and more, you can run `npm install` in this directory to install the dependencies for the scss compiler. After that, just run `npm run build` to compile the SCSS and start a process that watches for new changes.
-
-![image](http://mattsmith.in/images/antika-v2.png)
+npm run build

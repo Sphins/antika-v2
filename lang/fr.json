@@ -1,0 +1,84 @@
+{
+  "ANTIKA_V2": {
+    "LOCALIZATION_PREFIXES": {
+      "abilities": "ANTIKA_V2.Ability",
+      "items": "ANTIKA_V2.Item",
+      "effects": "ANTIKA_V2.Effect"
+    },
+
+    "Ability": {
+      "Soma":     { "long": "Soma",     "abbr": "SOM" },
+      "Sophos":   { "long": "Sophos",  "abbr": "SOP" },
+      "Symbiose": { "long": "Symbiose","abbr": "SYM" }
+    },
+
+    "SheetLabels": {
+      "Actor": "Feuille de Personnage (Antika V2)",
+      "Item":  "Feuille d’Objet (Antika V2)"
+    },
+
+    "Item": {
+      "Arme": {
+        "label":      "Arme",
+        "range":      "Distance",
+        "melee":      "Mêlée",
+        "damage":     "Dégâts",
+        "subtype":    "Catégorie (tranchante, perforante, contondante...)",
+        "attackDice": "Dés d’Attaque",
+        "notes":      "Notes"
+      },
+      "Armure": {
+        "label":       "Armure",
+        "armorValue":  "Protection (PA)",
+        "penalty":     "Malus",
+        "notes":       "Notes"
+      },
+      "Bouclier": {
+        "label":       "Bouclier",
+        "shieldDice":  "Dés de Défense",
+        "shieldBonus": "Bonus de Parade",
+        "notes":       "Notes"
+      },
+      "Pouvoir": {
+        "PMCost":     "Coût (PM)",
+        "FDBase":     "FD de Base",
+        "HubrisCost": "Coût en Hubris",
+        "Effect":     "Effet du Pouvoir",
+        "Duration":   "Durée",
+        "Save":       "Sauvegarde",
+        "notes":      "Notes"
+      },
+      "Aptitude": {
+        "label":       "Aptitude",
+        "description": "Description"
+      },
+      "Objet": {
+        "label":       "Objet",
+        "description": "Description"
+      }
+    },
+
+    "Effect": {
+      "Source":    "Source",
+      "Toggle":    "Activer / Désactiver l’Effet",
+      "Temporary": "Effets Temporaires",
+      "Passive":   "Effets Passifs",
+      "Inactive":  "Effets Inactifs"
+    }
+  },
+
+  "TYPES": {
+    "Actor": {
+      "character": "Personnage",
+      "npc":       "PNJ"
+    },
+    "Item": {
+      "arme":     "Arme",
+      "armure":   "Armure",
+      "bouclier": "Bouclier",
+      "pouvoir":  "Pouvoir",
+      "aptitude": "Aptitude",
+      "objet":    "Objet"
+    }
+  }
+}

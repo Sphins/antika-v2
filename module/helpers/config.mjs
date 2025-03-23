@@ -1,23 +1,19 @@
-export const ANTIKA_V2 = {};
+export const ANTIKA_V2 = {
+  LOCALIZATION_PREFIXES: {
+    abilities: "ANTIKA_V2.Ability",
+    items: "ANTIKA_V2.Item",
+    effects: "ANTIKA_V2.Effect"
+  },
 
-/**
- * The set of Ability Scores used within the system.
- * @type {Object}
- */
-ANTIKA_V2.abilities = {
-  str: 'ANTIKA_V2.Ability.Str.long',
-  dex: 'ANTIKA_V2.Ability.Dex.long',
-  con: 'ANTIKA_V2.Ability.Con.long',
-  int: 'ANTIKA_V2.Ability.Int.long',
-  wis: 'ANTIKA_V2.Ability.Wis.long',
-  cha: 'ANTIKA_V2.Ability.Cha.long',
-};
+  abilities: {
+    soma: 'ANTIKA_V2.Ability.Soma.long',
+    sophos: 'ANTIKA_V2.Ability.Sophos.long',
+    symbiose: 'ANTIKA_V2.Ability.Symbiose.long'
+  },
 
-ANTIKA_V2.abilityAbbreviations = {
-  str: 'ANTIKA_V2.Ability.Str.abbr',
-  dex: 'ANTIKA_V2.Ability.Dex.abbr',
-  con: 'ANTIKA_V2.Ability.Con.abbr',
-  int: 'ANTIKA_V2.Ability.Int.abbr',
-  wis: 'ANTIKA_V2.Ability.Wis.abbr',
-  cha: 'ANTIKA_V2.Ability.Cha.abbr',
+  abilityAbbreviations: {
+    soma: 'ANTIKA_V2.Ability.Soma.abbr',
+    sophos: 'ANTIKA_V2.Ability.Sophos.abbr',
+    symbiose: 'ANTIKA_V2.Ability.Symbiose.abbr'
+  }
 };
