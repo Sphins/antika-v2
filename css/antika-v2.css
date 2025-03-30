@@ -1,10 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+
+@font-face {
+  font-family: 'Spartacus';
+  src: url('../fonts/Spartacus.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* Global styles */
 .window-app {
   font-family: "Roboto", sans-serif;
 }
 
-.rollable:hover, .rollable:focus {
+.rollable:hover,
+.rollable:focus {
   color: #000;
   text-shadow: 0 0 10px red;
   cursor: pointer;
@@ -207,51 +218,68 @@
 .antika-v2 .item-form {
   font-family: "Roboto", sans-serif;
 }
+
 .antika-v2 .sheet-header {
-  flex: 0 auto;
   overflow: hidden;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
+
 .antika-v2 .sheet-header .profile-img {
-  flex: 0 0 100px;
-  height: 100px;
+  flex: 0 0 150px;
+  height: 150px;
+  width: 150px;
   margin-right: 10px;
+  border: 2px solid #888;
+  border-radius: 4px;
 }
+
 .antika-v2 .sheet-header .header-fields {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
 }
+
 .antika-v2 .sheet-header h1.charname {
   height: 50px;
   padding: 0px;
   margin: 5px 0;
   border-bottom: 0;
 }
+
 .antika-v2 .sheet-header h1.charname input {
   width: 100%;
   height: 100%;
   margin: 0;
 }
+
 .antika-v2 .sheet-tabs {
   flex: 0;
 }
+
 .antika-v2 .sheet-body,
 .antika-v2 .sheet-body .tab,
 .antika-v2 .sheet-body .tab .editor {
   height: 100%;
 }
+
 .antika-v2 .tox .tox-editor-container {
   background: #fff;
 }
+
 .antika-v2 .tox .tox-edit-area {
   padding: 0 8px;
 }
+
 .antika-v2 .resource-label {
   font-weight: bold;
 }
+
 .antika-v2 .items-header {
   height: 28px;
   margin: 2px 0;
@@ -261,16 +289,19 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.antika-v2 .items-header > * {
+
+.antika-v2 .items-header>* {
   font-size: 14px;
   text-align: center;
 }
+
 .antika-v2 .items-header .item-name {
   font-weight: bold;
   padding-left: 5px;
   text-align: left;
   display: flex;
 }
+
 .antika-v2 .items-list {
   list-style: none;
   margin: 0;
@@ -279,11 +310,13 @@
   scrollbar-width: thin;
   color: #444;
 }
+
 .antika-v2 .items-list .item-list {
   list-style: none;
   margin: 0;
   padding: 0;
 }
+
 .antika-v2 .items-list .item-name {
   flex: 2;
   margin: 0;
@@ -293,32 +326,40 @@
   align-items: center;
   display: flex;
 }
-.antika-v2 .items-list .item-name h3, .antika-v2 .items-list .item-name h4 {
+
+.antika-v2 .items-list .item-name h3,
+.antika-v2 .items-list .item-name h4 {
   margin: 0;
   white-space: nowrap;
   overflow-x: hidden;
 }
+
 .antika-v2 .items-list .item-controls {
   display: flex;
   flex: 0 0 100px;
   justify-content: flex-end;
 }
+
 .antika-v2 .items-list .item-controls a {
   font-size: 12px;
   text-align: center;
   margin: 0 6px;
 }
+
 .antika-v2 .items-list .item {
   align-items: center;
   padding: 0 2px;
   border-bottom: 1px solid #c9c7b8;
 }
+
 .antika-v2 .items-list .item:last-child {
   border-bottom: none;
 }
+
 .antika-v2 .items-list .item .item-name {
   color: #191813;
 }
+
 .antika-v2 .items-list .item .item-name .item-image {
   flex: 0 0 30px;
   height: 30px;
@@ -326,12 +367,14 @@
   border: none;
   margin-right: 5px;
 }
+
 .antika-v2 .items-list .item-prop {
   text-align: center;
   border-left: 1px solid #c9c7b8;
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
+
 .antika-v2 .items-list .items-header {
   height: 28px;
   margin: 2px 0;
@@ -341,18 +384,22 @@
   border: 2px groove #eeede0;
   font-weight: bold;
 }
-.antika-v2 .items-list .items-header > * {
+
+.antika-v2 .items-list .items-header>* {
   font-size: 12px;
   text-align: center;
 }
+
 .antika-v2 .items-list .items-header .item-name {
   padding-left: 5px;
   text-align: left;
 }
+
 .antika-v2 .item-formula {
   flex: 0 0 200px;
   padding: 0 8px;
 }
+
 .antika-v2 .effects .item .effect-source,
 .antika-v2 .effects .item .effect-duration,
 .antika-v2 .effects .item .effect-controls {
@@ -361,6 +408,91 @@
   border-right: 1px solid #c9c7b8;
   font-size: 12px;
 }
+
 .antika-v2 .effects .item .effect-controls {
   border: none;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em;
+}
+
+.grid-span-3 {
+  grid-column: span 3;
+}
+
+.window-app.antika-v2 .window-content {
+  background: url('../assets/backgrounds/parchmentBG.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.actor-banner {
+  font-family: 'Spartacus', serif;
+  flex: unset;
+  display: flex;
+  flex-direction: column;
+}
+
+.actor-banner label {
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.banner-top {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.actor-banner h1.charname {
+  border-bottom: none !important;
+  margin-bottom: 0;
+}
+
+.actor-banner h1.charname input {
+  border: none;
+  background: transparent;
+  font-size: 1.5em;
+  font-family: 'Spartacus', serif;
+  /* font-weight: bold; */
+  padding: 0;
+}
+
+.banner-image {
+  flex: 0 0 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.banner-bottom {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.resource-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-block label {
+  font-weight: bold;
+  margin-bottom: 0.2rem;
 }

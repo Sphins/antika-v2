@@ -1,0 +1,131 @@
+<div class="actor-banner">
+  <div class="banner-top">
+    <div class="banner-image">
+      <img
+        class="profile-img"
+        src="{{actor.img}}"
+        data-edit="img"
+        title="{{actor.name}}"
+        height="150"
+        width="150"
+      />
+    </div>
+
+    <div class="banner-info">
+      <h1 class="charname">
+        <input
+          name="name"
+          type="text"
+          value="{{actor.name}}"
+          placeholder="{{localize 'Name'}}"
+        />
+      </h1>
+
+      <div class="grid grid-3col">
+        <div class="info-col">
+          <label>{{localize 'ANTIKA_V2.Actor.age'}}</label>
+          <input type="text" name="system.age" value="{{system.age}}" />
+
+          <label>{{localize 'ANTIKA_V2.Actor.sex'}}</label>
+          <input type="text" name="system.sex" value="{{system.sex}}" />
+
+          <label>{{localize 'ANTIKA_V2.Actor.size'}}</label>
+          <input type="text" name="system.size" value="{{system.size}}" />
+
+          <label>{{localize 'ANTIKA_V2.Actor.weight'}}</label>
+          <input type="text" name="system.weight" value="{{system.weight}}" />
+        </div>
+
+        <div class="info-col">
+          <label>{{localize 'ANTIKA_V2.Actor.race'}}</label>
+          <input type="text" name="system.race" value="{{system.race}}" />
+
+          <label>{{localize 'ANTIKA_V2.Actor.carriere'}}</label>
+          <input type="text" name="system.carriere" value="{{system.carriere}}" />
+
+          <label>{{localize 'ANTIKA_V2.Actor.metier'}}</label>
+          <input type="text" name="system.metier" value="{{system.metier}}" />
+
+          <label>{{localize 'ANTIKA_V2.Actor.main'}}</label>
+          <select name="system.main">
+            <option value="droite" {{#if (eq system.main 'droite')}}selected{{/if}}>Droite</option>
+            <option value="gauche" {{#if (eq system.main 'gauche')}}selected{{/if}}>Gauche</option>
+            <option value="ambidextre" {{#if (eq system.main 'ambidextre')}}selected{{/if}}>Ambidextre</option>
+          </select>
+        </div>
+
+        <div class="info-col">
+          <label>{{localize 'ANTIKA_V2.Actor.divinite'}}</label>
+          <input type="text" name="system.divinite" value="{{system.divinite}}" />
+
+          <label>{{localize 'ANTIKA_V2.Actor.origine'}}</label>
+          <input type="text" name="system.origine" value="{{system.origine}}" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="banner-bottom grid grid-3col">
+    <div>
+      <div class="resource-block">
+        <label>Soma</label>
+        <input
+          type="text"
+          name="system.attributes.soma.value"
+          value="{{system.attributes.soma.value}}"
+          data-dtype="Number"
+        />
+      </div>
+      <div class="resource-block">
+        <label>PV</label>
+        <div class="flexrow flex-between">
+          <input type="text" name="system.pv.value" value="{{system.pv.value}}" data-dtype="Number" />
+          <span>/</span>
+          <input type="text" name="system.pv.max" value="{{system.pv.max}}" data-dtype="Number" />
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="resource-block">
+        <label>Sophos</label>
+        <input
+          type="text"
+          name="system.attributes.sophos.value"
+          value="{{system.attributes.sophos.value}}"
+          data-dtype="Number"
+        />
+      </div>
+      <div class="resource-block">
+        <label>Hubris</label>
+        <input
+          type="text"
+          name="system.resources.hubris.value"
+          value="{{system.resources.hubris.value}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+
+    <div>
+      <div class="resource-block">
+        <label>Symbiose</label>
+        <input
+          type="text"
+          name="system.attributes.symbiose.value"
+          value="{{system.attributes.symbiose.value}}"
+          data-dtype="Number"
+        />
+      </div>
+      <div class="resource-block">
+        <label>Aristeia</label>
+        <input
+          type="text"
+          name="system.resources.aristeia.value"
+          value="{{system.resources.aristeia.value}}"
+          data-dtype="Number"
+        />
+      </div>
+    </div>
+  </div>
+</div>

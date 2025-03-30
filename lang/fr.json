@@ -6,10 +6,42 @@
       "effects": "ANTIKA_V2.Effect"
     },
 
+    "PV": "Points de Vie",
+    "PM": "Points de Miracle",
+    "Level": "Niveau",
+    "Main": {
+  "droite": "Droite",
+  "ambidextre": "Ambidextre",
+  "gauche": "Gauche"
+},
+
+
+    "Tab": {
+      "Features": "Aptitudes",
+      "Description": "Description",
+      "Items": "Equipement",
+      "Spells": "Pouvoirs",
+      "Effects": "Effets"
+    },
+
     "Ability": {
       "Soma":     { "long": "Soma",     "abbr": "SOM" },
       "Sophos":   { "long": "Sophos",  "abbr": "SOP" },
       "Symbiose": { "long": "Symbiose","abbr": "SYM" }
+    },
+
+    "Actor": {
+      "age": "Age",
+      "sex": "Sexe",
+      "size": "Taille",
+      "weight": "Poids",
+      "race": "Race",
+      "carriere": "Carrière",
+      "metier": "Metier",
+      "divinite": "Descendant de",
+      "origine": "Originaire de",
+      "main": "Main directrice",
+      "descriptionCourte": "Description"
     },
 
     "SheetLabels": {

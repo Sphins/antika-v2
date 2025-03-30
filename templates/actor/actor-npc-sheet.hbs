@@ -1,117 +1,13 @@
 <form class="{{cssClass}} {{actor.type}} flexcol" autocomplete="off">
 
-  {{!-- Sheet Header --}}
-  <header class="sheet-header">
-    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="100" width="100"/>
-    <div class="header-fields">
-      <h1 class="charname"><input name="name" type="text" value="{{actor.name}}" placeholder="Name"/></h1>
+  {{> "systems/antika-v2/templates/actor/parts/actor-header.hbs"}}
+  {{> "systems/antika-v2/templates/actor/parts/actor-tabs.hbs"}}
 
-      {{!-- Ressources Principales --}}
-      <div class="resources grid grid-3col">
-
-        {{!-- Points de Vie (PV) --}}
-        <div class="resource flex-group-center">
-          <label for="system.pv.value" class="resource-label">Points de Vie</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.pv.value" value="{{system.pv.value}}" data-dtype="Number"/>
-            <span> / </span>
-            <input type="text" name="system.pv.max" value="{{system.pv.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-        {{!-- Points de Miracle (PM) --}}
-        <div class="resource flex-group-center">
-          <label for="system.pm.value" class="resource-label">Points de Miracle</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.pm.value" value="{{system.pm.value}}" data-dtype="Number"/>
-            <span> / </span>
-            <input type="text" name="system.pm.max" value="{{system.pm.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-        {{!-- Niveau --}}
-        <div class="resource flex-group-center">
-          <label for="system.level.value" class="resource-label">Niveau</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.level.value" value="{{system.level.value}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-      </div>
-
-      {{!-- Ressources Secondaires --}}
-      <div class="resources grid grid-3col">
-
-        {{!-- Aristéia --}}
-        <div class="resource flex-group-center">
-          <label for="system.resources.aristeia.value" class="resource-label">Aristéia</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.resources.aristeia.value" value="{{system.resources.aristeia.value}}" data-dtype="Number"/>
-            <span> / </span>
-            <input type="text" name="system.resources.aristeia.max" value="{{system.resources.aristeia.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-        {{!-- Hubris --}}
-        <div class="resource flex-group-center">
-          <label for="system.resources.hubris.value" class="resource-label">Hubris</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.resources.hubris.value" value="{{system.resources.hubris.value}}" data-dtype="Number"/>
-            <span> / </span>
-            <input type="text" name="system.resources.hubris.max" value="{{system.resources.hubris.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-        {{!-- Némésis --}}
-        <div class="resource flex-group-center">
-          <label for="system.resources.nemesis.value" class="resource-label">Némésis</label>
-          <div class="resource-content flexrow flex-center flex-between">
-            <input type="text" name="system.resources.nemesis.value" value="{{system.resources.nemesis.value}}" data-dtype="Number"/>
-            <span> / </span>
-            <input type="text" name="system.resources.nemesis.max" value="{{system.resources.nemesis.max}}" data-dtype="Number"/>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </header>
-
-  {{!-- Navigation des onglets --}}
-  <nav class="sheet-tabs tabs" data-group="primary">
-    <a class="item" data-tab="features">Aptitudes</a>
-    <a class="item" data-tab="description">Description</a>
-    <a class="item" data-tab="items">Équipement</a>
-    <a class="item" data-tab="spells">Pouvoirs</a>
-    <a class="item" data-tab="effects">Effets</a>
-  </nav>
-
-  {{!-- Corps de la fiche --}}
   <section class="sheet-body">
-
-    {{!-- Aptitudes --}}
-    <div class="tab features" data-group="primary" data-tab="features">
-      {{> "systems/antika-v2/templates/actor/parts/actor-features.hbs"}}
-    </div>
-
-    {{!-- Description --}}
-    <div class="tab biography" data-group="primary" data-tab="description">
-      {{editor enrichedBiography target="system.biography" engine="prosemirror" button=true editable=editable}}
-    </div>
-
-    {{!-- Équipement --}}
-    <div class="tab items" data-group="primary" data-tab="items">
-      {{> "systems/antika-v2/templates/actor/parts/actor-items.hbs"}}
-    </div>
-
-    {{!-- Pouvoirs --}}
-    <div class="tab spells" data-group="primary" data-tab="spells">
-      {{> "systems/antika-v2/templates/actor/parts/actor-spells.hbs"}}
-    </div>
-
-    {{!-- Effets actifs --}}
-    <div class="tab effects flexcol" data-group="primary" data-tab="effects">
-      {{> "systems/antika-v2/templates/actor/parts/actor-effects.hbs"}}
-    </div>
-
+    {{> "systems/antika-v2/templates/actor/parts/actor-features.hbs"}}
+    {{> "systems/antika-v2/templates/actor/parts/actor-description.hbs"}}
+    {{> "systems/antika-v2/templates/actor/parts/actor-items.hbs"}}
+    {{> "systems/antika-v2/templates/actor/parts/actor-spells.hbs"}}
+    {{> "systems/antika-v2/templates/actor/parts/actor-effects.hbs"}}
   </section>
 </form>

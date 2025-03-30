@@ -6,11 +6,35 @@
       "effects": "ANTIKA_V2.Effect"
     },
 
+    "PV": "Health Points",
+    "PM": "Miracle Points",
+    "Level": "Level",
+    "Main": {
+  "droite": "Droite",
+  "ambidextre": "Ambidextre",
+  "gauche": "Gauche"
+},
+
+
     "Ability": {
       "Soma":     { "long": "Soma",     "abbr": "SOM" },
       "Sophos":   { "long": "Sophos",  "abbr": "SOP" },
       "Symbiose": { "long": "Symbiose","abbr": "SYM" }
     },
+
+    "Actor": {
+    "age": "Age",
+    "sex": "Sex",
+    "size": "Height",
+    "weight": "Weight",
+    "race": "Race",
+    "carriere": "Career",
+    "metier": "Profession",
+    "divinite": "Descendant of",
+    "origine": "Origin",
+    "main": "Main hand",
+    "descriptionCourte": "Description"
+  },
 
     "SheetLabels": {
       "Actor": "Character Sheet (Antika V2)",

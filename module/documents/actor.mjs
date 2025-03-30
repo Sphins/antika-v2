@@ -10,7 +10,6 @@ export class AntikaV2Actor extends Actor {
 
   /** @override */
   prepareBaseData() {
-    // Initialisation des valeurs par défaut
     const system = this.system;
 
     // Attributs principaux (Soma, Sophos, Symbiose)
@@ -19,24 +18,33 @@ export class AntikaV2Actor extends Actor {
     system.attributes.sophos = system.attributes.sophos || { value: 0 };
     system.attributes.symbiose = system.attributes.symbiose || { value: 0 };
 
-    // Ressources principales (PV, PM, Aristéia, Hubris, Némésis)
+    // Ressources principales
     system.resources = system.resources || {};
     system.resources.pv = system.resources.pv || { value: 10, max: 10 };
     system.resources.pm = system.resources.pm || { value: 5, max: 5 };
     system.resources.aristeia = system.resources.aristeia || { value: 0, max: 3 };
     system.resources.hubris = system.resources.hubris || { value: 0, max: 5 };
     system.resources.nemesis = system.resources.nemesis || { value: 0, max: 3 };
+
+    // ✅ Forcer les entiers (anti-erreurs de validation)
+    system.resources.hubris.value = parseInt(system.resources.hubris.value) || 0;
+    system.resources.aristeia.value = parseInt(system.resources.aristeia.value) || 0;
   }
+
 
   /** @override */
   prepareDerivedData() {
     const system = this.system;
 
-    // Calcul des valeurs dérivées
-    system.resources.pv.max = system.attributes.soma.value * 2 + 10;  // Exemple : PV max = 2 * Soma + 10
-    system.resources.pm.max = system.attributes.sophos.value + 5; // Exemple : PM max = Sophos + 5
-    system.resources.aristeia.max = Math.floor(system.attributes.symbiose.value / 2); // Aristéia max = Symbiose / 2
+    const soma = parseInt(system.attributes.soma.value) || 0;
+    const sophos = parseInt(system.attributes.sophos.value) || 0;
+    const symbiose = parseInt(system.attributes.symbiose.value) || 0;
+
+    system.resources.pv.max = soma * 2 + 10;
+    system.resources.pm.max = sophos + 5;
+    system.resources.aristeia.max = Math.floor(symbiose / 2);
   }
+
 
   /**
    * @override
@@ -57,6 +65,16 @@ export class AntikaV2Actor extends Actor {
       nemesis: system.resources.nemesis.value
     };
   }
+
+  /**
+   * Intercepte les données modifiées juste avant l'enregistrement.
+   * Permet de corriger des formats invalides (ex: "0" string => 0 number).
+   */
+  // async _preUpdate(changed, options, user) {
+  //   console.warn("🧪 PRE-UPDATE DATA:", foundry.utils.deepClone(changed));
+
+  //   return super._preUpdate(changed, options, user);
+  // }
 
   /**
    * Convertit l'Actor en un objet simplifié.

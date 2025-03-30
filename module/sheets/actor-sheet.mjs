@@ -12,8 +12,8 @@ export class AntikaV2ActorSheet extends ActorSheet {
   static get defaultOptions() {
     return foundry.utils.mergeObject(super.defaultOptions, {
       classes: ['antika-v2', 'sheet', 'actor'],
-      width: 600,
-      height: 600,
+      width: 800,
+      height: 1000,
       tabs: [
         {
           navSelector: '.sheet-tabs',
