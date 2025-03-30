@@ -413,12 +413,6 @@
   border: none;
 }
 
-.field-group {
-  display: flex;
-  flex-direction: column;
-  margin: 0.5em;
-}
-
 .grid-span-3 {
   grid-column: span 3;
 }
@@ -495,4 +489,37 @@
 .resource-block label {
   font-weight: bold;
   margin-bottom: 0.2rem;
+}
+
+.info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.info-col label {
+  margin-bottom: 0.1rem;
+}
+
+.info-col input,
+.info-col select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.resource-block span {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: black;
+  padding-left: 0.5em;
+  align-self: center;
+}
+
+.flexrow.flex-between {
+  align-items: center;
+}
+
+.grid-4col {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
 }

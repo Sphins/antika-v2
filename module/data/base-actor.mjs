@@ -20,18 +20,6 @@ export default class AntikaV2ActorBase extends AntikaV2DataModel {
       })
     });
 
-    // ❤️ Points de Vie (PV)
-    schema.pv = new fields.SchemaField({
-      value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
-      max: new fields.NumberField({ ...requiredInteger, initial: 10 })
-    });
-
-    // 🔥 Points de Miracle (PM)
-    schema.pm = new fields.SchemaField({
-      value: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 }),
-      max: new fields.NumberField({ ...requiredInteger, initial: 5 })
-    });
-
     // ⚔️ Ressources Spéciales
     schema.resources = new fields.SchemaField({
       aristeia: new fields.SchemaField({
@@ -40,12 +28,25 @@ export default class AntikaV2ActorBase extends AntikaV2DataModel {
       }),
       hubris: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 5 }),
-        max: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 5 })
+        max: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0, max: 5 })
       }),
       nemesis: new fields.SchemaField({
         value: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 3 }),
-        max: new fields.NumberField({ ...requiredInteger, initial: 0, min: 0, max: 3 })
+        max: new fields.NumberField({ ...requiredInteger, initial: 3, min: 0, max: 3 })
+      }),
+
+      // ❤️ Points de Vie (PV)
+      pv: new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 10, min: 0 }),
+        max: new fields.NumberField({ ...requiredInteger, initial: 10 })
+      }),
+
+      // 🔥 Points de Miracle (PM)
+      pm: new fields.SchemaField({
+        value: new fields.NumberField({ ...requiredInteger, initial: 5, min: 0 }),
+        max: new fields.NumberField({ ...requiredInteger, initial: 5 })
       })
+
     });
 
 

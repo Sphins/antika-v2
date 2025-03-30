@@ -21,111 +21,168 @@
         />
       </h1>
 
-      <div class="grid grid-3col">
-        <div class="info-col">
-          <label>{{localize 'ANTIKA_V2.Actor.age'}}</label>
-          <input type="text" name="system.identity.age" value="{{system.identity.age}}" />
+<div class="grid grid-3col info-columns">
+  <div class="info-pair">
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.age'}}</label>
+      <input type="text" name="system.identity.age" value="{{system.identity.age}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.sex'}}</label>
+      <input type="text" name="system.identity.sex" value="{{system.identity.sex}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.size'}}</label>
+      <input type="text" name="system.identity.size" value="{{system.identity.size}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.weight'}}</label>
+      <input type="text" name="system.identity.weight" value="{{system.identity.weight}}" />
+    </div>
+  </div>
 
-          <label>{{localize 'ANTIKA_V2.Actor.sex'}}</label>
-          <input type="text" name="system.identity.sex" value="{{system.identity.sex}}" />
+  <div class="info-pair">
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.race'}}</label>
+      <input type="text" name="system.identity.race" value="{{system.identity.race}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.carriere'}}</label>
+      <input type="text" name="system.identity.carriere" value="{{system.identity.carriere}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.metier'}}</label>
+      <input type="text" name="system.identity.metier" value="{{system.identity.metier}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.main'}}</label>
+      <select name="system.identity.main">
+        <option value="droite" {{#if (eq system.identity.main 'droite')}}selected{{/if}}>Droite</option>
+        <option value="gauche" {{#if (eq system.identity.main 'gauche')}}selected{{/if}}>Gauche</option>
+        <option value="ambidextre" {{#if (eq system.identity.main 'ambidextre')}}selected{{/if}}>Ambidextre</option>
+      </select>
+    </div>
+  </div>
 
-          <label>{{localize 'ANTIKA_V2.Actor.size'}}</label>
-          <input type="text" name="system.identity.size" value="{{system.identity.size}}" />
+  <div class="info-pair">
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.divinite'}}</label>
+      <input type="text" name="system.identity.divinite" value="{{system.identity.divinite}}" />
+    </div>
+    <div class="form-group">
+      <label>{{localize 'ANTIKA_V2.Actor.origine'}}</label>
+      <input type="text" name="system.identity.origine" value="{{system.identity.origine}}" />
+    </div>
+  </div>
+</div>
 
-          <label>{{localize 'ANTIKA_V2.Actor.weight'}}</label>
-          <input type="text" name="system.identity.weight" value="{{system.identity.weight}}" />
-        </div>
 
-        <div class="info-col">
-          <label>{{localize 'ANTIKA_V2.Actor.race'}}</label>
-          <input type="text" name="system.identity.race" value="{{system.identity.race}}" />
 
-          <label>{{localize 'ANTIKA_V2.Actor.carriere'}}</label>
-          <input type="text" name="system.identity.carriere" value="{{system.identity.carriere}}" />
 
-          <label>{{localize 'ANTIKA_V2.Actor.metier'}}</label>
-          <input type="text" name="system.identity.metier" value="{{system.identity.metier}}" />
+    </div>
+  </div>
 
-          <label>{{localize 'ANTIKA_V2.Actor.main'}}</label>
-          <select name="system.identity.main">
-            <option value="droite" {{#if (eq system.identity.main 'droite')}}selected{{/if}}>Droite</option>
-            <option value="gauche" {{#if (eq system.identity.main 'gauche')}}selected{{/if}}>Gauche</option>
-            <option value="ambidextre" {{#if (eq system.identity.main 'ambidextre')}}selected{{/if}}>Ambidextre</option>
-          </select>
-        </div>
-
-        <div class="info-col">
-          <label>{{localize 'ANTIKA_V2.Actor.divinite'}}</label>
-          <input type="text" name="system.identity.divinite" value="{{system.identity.divinite}}" />
-
-          <label>{{localize 'ANTIKA_V2.Actor.origine'}}</label>
-          <input type="text" name="system.identity.origine" value="{{system.identity.origine}}" />
-        </div>
+<div class="banner-bottom grid grid-4col">
+  <div>
+    <div class="resource-block">
+      <label>Soma</label>
+      <input
+        type="text"
+        name="system.attributes.soma.value"
+        value="{{system.attributes.soma.value}}"
+        data-dtype="Number"
+      />
+    </div>
+    <div class="resource-block">
+      <label>PV</label>
+      <div class="flexrow flex-between">
+        <input
+          type="text"
+          name="system.resources.pv.value"
+          value="{{system.resources.pv.value}}"
+          data-dtype="Number"
+        />
+        <span>/ {{system.resources.pv.max}}</span>
       </div>
     </div>
   </div>
 
-  <div class="banner-bottom grid grid-3col">
-    <div>
-      <div class="resource-block">
-        <label>Soma</label>
-        <input
-          type="text"
-          name="system.attributes.soma.value"
-          value="{{system.attributes.soma.value}}"
-          data-dtype="Number"
-        />
-      </div>
-      <div class="resource-block">
-        <label>PV</label>
-        <div class="flexrow flex-between">
-          <input type="text" name="system.pv.value" value="{{system.pv.value}}" data-dtype="Number" />
-          <span>/</span>
-          <input type="text" name="system.pv.max" value="{{system.pv.max}}" data-dtype="Number" />
-        </div>
-      </div>
+  <div>
+    <div class="resource-block">
+      <label>Sophos</label>
+      <input
+        type="text"
+        name="system.attributes.sophos.value"
+        value="{{system.attributes.sophos.value}}"
+        data-dtype="Number"
+      />
     </div>
-
-    <div>
-      <div class="resource-block">
-        <label>Sophos</label>
-        <input
-          type="text"
-          name="system.attributes.sophos.value"
-          value="{{system.attributes.sophos.value}}"
-          data-dtype="Number"
-        />
-      </div>
-      <div class="resource-block">
-        <label>Hubris</label>
+   
+    <div class="resource-block">
+      <label>Hubris</label>
+      <div class="flexrow flex-between">
         <input
           type="text"
           name="system.resources.hubris.value"
           value="{{system.resources.hubris.value}}"
           data-dtype="Number"
         />
+        <span>/ {{system.resources.hubris.max}}</span>
       </div>
     </div>
+  </div>
 
-    <div>
-      <div class="resource-block">
-        <label>Symbiose</label>
-        <input
-          type="text"
-          name="system.attributes.symbiose.value"
-          value="{{system.attributes.symbiose.value}}"
-          data-dtype="Number"
-        />
-      </div>
-      <div class="resource-block">
-        <label>Aristeia</label>
+  <div>
+    <div class="resource-block">
+      <label>Symbiose</label>
+      <input
+        type="text"
+        name="system.attributes.symbiose.value"
+        value="{{system.attributes.symbiose.value}}"
+        data-dtype="Number"
+      />
+    </div>
+    <div class="resource-block">
+      <label>Aristeia</label>
+      <div class="flexrow flex-between">
         <input
           type="text"
           name="system.resources.aristeia.value"
           value="{{system.resources.aristeia.value}}"
           data-dtype="Number"
         />
+        <span>/ {{system.resources.aristeia.max}}</span>
       </div>
     </div>
   </div>
+
+  <div>
+    <div class="resource-block">
+      <label>Nemesis</label>
+      <div class="flexrow flex-between">
+        <input
+          type="text"
+          name="system.resources.nemesis.value"
+          value="{{system.resources.nemesis.value}}"
+          data-dtype="Number"
+        />
+        <span>/ {{system.resources.nemesis.max}}</span>
+        
+      </div>
+       <div class="resource-block">
+      <label>PM</label>
+      <div class="flexrow flex-between">
+        <input
+          type="text"
+          name="system.resources.pm.value"
+          value="{{system.resources.pm.value}}"
+          data-dtype="Number"
+        />
+        <span>/ {{system.resources.pm.max}}</span>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+
 </div>

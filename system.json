@@ -20,7 +20,7 @@
       "thumbnail": "systems/antika-v2/assets/anvil-impact.png"
     }
   ],
-  "version": "2.0.12",
+  "version": "2.0.16",
   "compatibility": {
     "minimum": 12,
     "verified": "12.331"

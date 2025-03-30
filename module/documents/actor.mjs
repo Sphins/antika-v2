@@ -20,17 +20,37 @@ export class AntikaV2Actor extends Actor {
 
     // Ressources principales
     system.resources = system.resources || {};
-    system.resources.pv = system.resources.pv || { value: 10, max: 10 };
-    system.resources.pm = system.resources.pm || { value: 5, max: 5 };
-    system.resources.aristeia = system.resources.aristeia || { value: 0, max: 3 };
-    system.resources.hubris = system.resources.hubris || { value: 0, max: 5 };
-    system.resources.nemesis = system.resources.nemesis || { value: 0, max: 3 };
+
+    // PV : seul le value est modifiable par l’utilisateur
+    if (!system.resources.pv) system.resources.pv = {};
+    if (system.resources.pv.value === undefined) {
+      const soma = parseInt(system.attributes?.soma?.value) || 0;
+      system.resources.pv.value = soma * 2 + 10; // valeur initiale = max
+    }
+
+    // PM : max est calculé, value initialisé uniquement
+    system.resources.pm = system.resources.pm || {};
+    if (system.resources.pm.value === undefined) system.resources.pm.value = 5;
+
+    // Aristeia : max est calculé, value initialisé uniquement
+    system.resources.aristeia = system.resources.aristeia || {};
+    if (system.resources.aristeia.value === undefined) system.resources.aristeia.value = 0;
+
+    // Hubris et Némésis : pas calculés, initialisés complets
+    system.resources.hubris = system.resources.hubris || {};
+    if (system.resources.hubris.value === undefined) system.resources.hubris.value = 0;
+    if (system.resources.hubris.max === undefined) system.resources.hubris.max = 5;
+
+    system.resources.nemesis = system.resources.nemesis || {};
+    if (system.resources.nemesis.value === undefined) system.resources.nemesis.value = 0;
+    if (system.resources.nemesis.max === undefined) system.resources.nemesis.max = 3;
 
     // ✅ Forcer les entiers (anti-erreurs de validation)
     system.resources.hubris.value = parseInt(system.resources.hubris.value) || 0;
     system.resources.aristeia.value = parseInt(system.resources.aristeia.value) || 0;
+    system.resources.pm.value = parseInt(system.resources.pm.value) || 0;
+    system.resources.pv.value = parseInt(system.resources.pv.value) || 0;
   }
-
 
   /** @override */
   prepareDerivedData() {
