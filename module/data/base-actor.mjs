@@ -52,10 +52,10 @@ export default class AntikaV2ActorBase extends AntikaV2DataModel {
     // 🧬 Données de Bandeau (identité)
     schema.identity = new fields.SchemaField({
       age: new fields.NumberField({ required: true, nullable: false, initial: 30, min: 0 }),
-      sex: new fields.StringField({ required: true, initial: "M" }),
-      size: new fields.StringField({ required: true, initial: "1,75m" }),
-      weight: new fields.StringField({ required: true, initial: "80kg" }),
-      race: new fields.StringField({ required: true, initial: "Humain" }),
+      sex: new fields.StringField({ required: true, initial: "" }),
+      size: new fields.StringField({ required: true, initial: "" }),
+      weight: new fields.StringField({ required: true, initial: "" }),
+      race: new fields.StringField({ required: true, initial: "" }),
       carriere: new fields.StringField({ required: true, initial: "" }),
       metier: new fields.StringField({ required: true, initial: "" }),
       divinite: new fields.StringField({ required: true, initial: "" }),

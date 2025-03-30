@@ -24,42 +24,42 @@
       <div class="grid grid-3col">
         <div class="info-col">
           <label>{{localize 'ANTIKA_V2.Actor.age'}}</label>
-          <input type="text" name="system.age" value="{{system.age}}" />
+          <input type="text" name="system.identity.age" value="{{system.identity.age}}" />
 
           <label>{{localize 'ANTIKA_V2.Actor.sex'}}</label>
-          <input type="text" name="system.sex" value="{{system.sex}}" />
+          <input type="text" name="system.identity.sex" value="{{system.identity.sex}}" />
 
           <label>{{localize 'ANTIKA_V2.Actor.size'}}</label>
-          <input type="text" name="system.size" value="{{system.size}}" />
+          <input type="text" name="system.identity.size" value="{{system.identity.size}}" />
 
           <label>{{localize 'ANTIKA_V2.Actor.weight'}}</label>
-          <input type="text" name="system.weight" value="{{system.weight}}" />
+          <input type="text" name="system.identity.weight" value="{{system.identity.weight}}" />
         </div>
 
         <div class="info-col">
           <label>{{localize 'ANTIKA_V2.Actor.race'}}</label>
-          <input type="text" name="system.race" value="{{system.race}}" />
+          <input type="text" name="system.identity.race" value="{{system.identity.race}}" />
 
           <label>{{localize 'ANTIKA_V2.Actor.carriere'}}</label>
-          <input type="text" name="system.carriere" value="{{system.carriere}}" />
+          <input type="text" name="system.identity.carriere" value="{{system.identity.carriere}}" />
 
           <label>{{localize 'ANTIKA_V2.Actor.metier'}}</label>
-          <input type="text" name="system.metier" value="{{system.metier}}" />
+          <input type="text" name="system.identity.metier" value="{{system.identity.metier}}" />
 
           <label>{{localize 'ANTIKA_V2.Actor.main'}}</label>
-          <select name="system.main">
-            <option value="droite" {{#if (eq system.main 'droite')}}selected{{/if}}>Droite</option>
-            <option value="gauche" {{#if (eq system.main 'gauche')}}selected{{/if}}>Gauche</option>
-            <option value="ambidextre" {{#if (eq system.main 'ambidextre')}}selected{{/if}}>Ambidextre</option>
+          <select name="system.identity.main">
+            <option value="droite" {{#if (eq system.identity.main 'droite')}}selected{{/if}}>Droite</option>
+            <option value="gauche" {{#if (eq system.identity.main 'gauche')}}selected{{/if}}>Gauche</option>
+            <option value="ambidextre" {{#if (eq system.identity.main 'ambidextre')}}selected{{/if}}>Ambidextre</option>
           </select>
         </div>
 
         <div class="info-col">
           <label>{{localize 'ANTIKA_V2.Actor.divinite'}}</label>
-          <input type="text" name="system.divinite" value="{{system.divinite}}" />
+          <input type="text" name="system.identity.divinite" value="{{system.identity.divinite}}" />
 
           <label>{{localize 'ANTIKA_V2.Actor.origine'}}</label>
-          <input type="text" name="system.origine" value="{{system.origine}}" />
+          <input type="text" name="system.identity.origine" value="{{system.identity.origine}}" />
         </div>
       </div>
     </div>
