@@ -65,6 +65,29 @@ export default class AntikaV2ActorBase extends AntikaV2DataModel {
       descriptionCourte: new fields.StringField({ required: false, blank: true })
     });
 
+    schema.capacity = new fields.SchemaField({});
+
+    // On accède à la liste des capacités depuis la localisation
+    const capacities = foundry.utils.getProperty(game.i18n.translations, "ANTIKA_V2.capacity") ?? {};
+
+    // Pour chaque groupe (soma, sophos, symbiose)
+    for (const [groupKey, abilities] of Object.entries(capacities)) {
+      const groupFields = {};
+
+      for (const abilityKey of Object.keys(abilities)) {
+        groupFields[abilityKey] = new fields.NumberField({ ...requiredInteger, initial: 0, min: 0 });
+
+        // Cas particulier : on ajoute un champ texte pour l'arme personnalisée
+        if (groupKey === "soma" && abilityKey === "arme") {
+          groupFields["armeLabel"] = new fields.StringField({ required: false, initial: "" });
+        }
+      }
+
+      schema.capacity.fields[groupKey] = new fields.SchemaField(groupFields);
+    }
+
+
+
     // 📜 Biographie (longue)
     schema.biography = new fields.StringField({ required: true, blank: true });
 

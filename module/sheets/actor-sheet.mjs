@@ -227,30 +227,84 @@ export class AntikaV2ActorSheet extends ActorSheet {
    * @param {Event} event   The originating click event
    * @private
    */
-  _onRoll(event) {
+  async _onRoll(event) {
     event.preventDefault();
+
     const element = event.currentTarget;
     const dataset = element.dataset;
 
-    // Handle item rolls.
-    if (dataset.rollType) {
-      if (dataset.rollType == 'item') {
-        const itemId = element.closest('.item').dataset.itemId;
-        const item = this.actor.items.get(itemId);
-        if (item) return item.roll();
+    if (!dataset.rollCapacity) return;
+
+    const [groupRaw, key] = dataset.rollCapacity.split(".");
+    const group = groupRaw.toLowerCase(); // On corrige la casse ici
+    const value = getProperty(this.actor.system.capacity, `${group}.${key}`) ?? 0;
+    const characteristic = getProperty(this.actor.system.attributes, `${group}.value`) ?? 0;
+    const label = game.i18n.localize(`ANTIKA_V2.capacity.${groupRaw}.${key}`);
+
+    console.log(`🎲 Jet pour ${label}`);
+    console.log("  • Groupe :", group);
+    console.log("  • Compétence :", key);
+    console.log("  • Valeur compétence :", value);
+    console.log("  • Valeur caractéristique :", characteristic);
+
+    let diceResults = [];
+    let nemesisGain = 0;
+
+    if (value > 0) {
+      for (let i = 0; i < value; i++) {
+        let roll = new Roll("1d10");
+        await roll.evaluate({ async: true });
+        let total = roll.total;
+
+        if (total === 10) {
+          nemesisGain++;
+          // relance tant qu’on fait 10
+          while (total === 10) {
+            const reroll = new Roll("1d10");
+            await reroll.evaluate({ async: true });
+            total = reroll.total;
+          }
+        }
+
+        diceResults.push(total);
       }
+    } else {
+      // Si pas entraîné et lié à Sophos => interdit
+      if (group === "sophos") {
+        ui.notifications.warn("Jet interdit : compétence liée à Sophos sans entraînement.");
+        return;
+      }
+
+      // Sinon jet à 1d5
+      const roll = new Roll("1d5");
+      await roll.evaluate({ async: true });
+      diceResults.push(roll.total);
     }
 
-    // Handle rolls that supply the formula directly.
-    if (dataset.roll) {
-      let label = dataset.label ? `[ability] ${dataset.label}` : '';
-      let roll = new Roll(dataset.roll, this.actor.getRollData());
-      roll.toMessage({
-        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-        flavor: label,
-        rollMode: game.settings.get('core', 'rollMode'),
-      });
-      return roll;
+    const bestRaw = Math.max(...diceResults);
+    const finalResult = bestRaw + characteristic;
+
+    // Mise à jour de la Némésis si nécessaire
+    if (nemesisGain > 0) {
+      const currentNemesis = getProperty(this.actor.system.resources.nemesis, "value") ?? 0;
+      await this.actor.update({ "system.resources.nemesis.value": currentNemesis + nemesisGain });
     }
+
+    const html = `
+      <p><strong>Dés lancés :</strong> ${diceResults.join(", ")}</p>
+      <p><strong>Caractéristique (${groupRaw}) :</strong> ${characteristic}</p>
+      <p><strong>Résultat final :</strong> ${bestRaw} + ${characteristic} = ${finalResult}</p>
+    `;
+
+    ChatMessage.create({
+      user: game.user.id,
+      speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+      flavor: `Jet de ${label}`,
+      content: html,
+    });
   }
+
+
+
+
 }

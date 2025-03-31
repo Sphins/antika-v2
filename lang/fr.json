@@ -5,17 +5,14 @@
       "items": "ANTIKA_V2.Item",
       "effects": "ANTIKA_V2.Effect"
     },
-
     "PV": "Points de Vie",
     "PM": "Points de Miracle",
     "Level": "Niveau",
     "Main": {
-  "droite": "Droite",
-  "ambidextre": "Ambidextre",
-  "gauche": "Gauche"
-},
-
-
+      "droite": "Droite",
+      "ambidextre": "Ambidextre",
+      "gauche": "Gauche"
+    },
     "Tab": {
       "Features": "Aptitudes",
       "Description": "Description",
@@ -23,13 +20,11 @@
       "Spells": "Pouvoirs",
       "Effects": "Effets"
     },
-
     "Ability": {
-      "Soma":     { "long": "Soma",     "abbr": "SOM" },
-      "Sophos":   { "long": "Sophos",  "abbr": "SOP" },
-      "Symbiose": { "long": "Symbiose","abbr": "SYM" }
+      "Soma": { "long": "Soma", "abbr": "SOM" },
+      "Sophos": { "long": "Sophos", "abbr": "SOP" },
+      "Symbiose": { "long": "Symbiose", "abbr": "SYM" }
     },
-
     "Actor": {
       "age": "Age",
       "sex": "Sexe",
@@ -43,74 +38,142 @@
       "main": "Main directrice",
       "descriptionCourte": "Description"
     },
-
     "SheetLabels": {
       "Actor": "Feuille de Personnage (Antika V2)",
-      "Item":  "Feuille d’Objet (Antika V2)"
+      "Item": "Feuille d’Objet (Antika V2)"
     },
-
     "Item": {
       "Arme": {
-        "label":      "Arme",
-        "range":      "Distance",
-        "melee":      "Mêlée",
-        "damage":     "Dégâts",
-        "subtype":    "Catégorie (tranchante, perforante, contondante...)",
+        "label": "Arme",
+        "range": "Distance",
+        "melee": "Mêlée",
+        "damage": "Dégâts",
+        "subtype": "Catégorie (tranchante, perforante, contondante...)",
         "attackDice": "Dés d’Attaque",
-        "notes":      "Notes"
+        "notes": "Notes"
       },
       "Armure": {
-        "label":       "Armure",
-        "armorValue":  "Protection (PA)",
-        "penalty":     "Malus",
-        "notes":       "Notes"
+        "label": "Armure",
+        "armorValue": "Protection (PA)",
+        "penalty": "Malus",
+        "notes": "Notes"
       },
       "Bouclier": {
-        "label":       "Bouclier",
-        "shieldDice":  "Dés de Défense",
+        "label": "Bouclier",
+        "shieldDice": "Dés de Défense",
         "shieldBonus": "Bonus de Parade",
-        "notes":       "Notes"
+        "notes": "Notes"
       },
       "Pouvoir": {
-        "PMCost":     "Coût (PM)",
-        "FDBase":     "FD de Base",
+        "PMCost": "Coût (PM)",
+        "FDBase": "FD de Base",
         "HubrisCost": "Coût en Hubris",
-        "Effect":     "Effet du Pouvoir",
-        "Duration":   "Durée",
-        "Save":       "Sauvegarde",
-        "notes":      "Notes"
+        "Effect": "Effet du Pouvoir",
+        "Duration": "Durée",
+        "Save": "Sauvegarde",
+        "notes": "Notes"
       },
       "Aptitude": {
-        "label":       "Aptitude",
+        "label": "Aptitude",
         "description": "Description"
       },
       "Objet": {
-        "label":       "Objet",
+        "label": "Objet",
         "description": "Description"
       }
     },
-
     "Effect": {
-      "Source":    "Source",
-      "Toggle":    "Activer / Désactiver l’Effet",
+      "Source": "Source",
+      "Toggle": "Activer / Désactiver l’Effet",
       "Temporary": "Effets Temporaires",
-      "Passive":   "Effets Passifs",
-      "Inactive":  "Effets Inactifs"
+      "Passive": "Effets Passifs",
+      "Inactive": "Effets Inactifs"
+    },
+    "capacity": {
+      "Soma": {
+        "arme_tranchante": "Arme tranchante",
+        "arme_perforante": "Arme perforante",
+        "arme_contondante": "Arme contondante",
+        "arme": "Arme",
+        "arme_arc": "Arme Arc",
+        "arme_fronde": "Arme Fronde",
+        "arme_de_jet": "Arme de jet",
+        "athletisme": "Athlétisme",
+        "bouclier": "Bouclier",
+        "cond_attelage": "Conduite d’attelage",
+        "endurance": "Endurance",
+        "equitation": "Équitation",
+        "esquive": "Esquive",
+        "grimpe": "Grimpe",
+        "natation": "Natation",
+        "pugilat": "Pugilat",
+        "souplesse": "Souplesse",
+        "vol_a_la_tire": "Vol à la tire"
+      },
+      "Sophos": {
+        "agriculture": "Agriculture",
+        "alchimie": "Alchimie",
+        "artisanat_forge": "Artisanat Forge",
+        "artisanat_charpentier": "Artisanat Charpentier",
+        "artisanat": "Artisanat",
+        "epos_animaux": "Épos animaux",
+        "epos_plantes": "Épos plantes",
+        "epos_geographie": "Épos géographie",
+        "epos_mythologie": "Épos mythologie",
+        "epos_fabuleux": "Épos créatures fabuleuses",
+        "epos_us_et_coutumes": "Épos Us & coutumes",
+        "gestion_patrimoine": "Gestion Patrimoine",
+        "ingenierie": "Ingénierie",
+        "lire_ecrire_grec": "Lire/écrire grec",
+        "lire_ecrire_barbare": "Lire/écrire barbare",
+        "lire_ecrire_aegyptien": "Lire/écrire Aegyptien",
+        "medecine": "Médecine",
+        "navigation": "Navigation",
+        "occultisme": "Occultisme",
+        "pieges": "Pièges",
+        "resistance": "Résistance",
+        "strategie": "Stratégie",
+        "survie": "Survie",
+        "theologie": "Théologie"
+      },
+      "Symbiose": {
+        "arts_lyriques": "Arts lyriques",
+        "commandement": "Commandement",
+        "comedie_danse": "Comédie/Danse",
+        "diplomatie": "Diplomatie",
+        "discretion": "Discrétion",
+        "divination": "Divination",
+        "dressage": "Dressage",
+        "evaluation": "Évaluation",
+        "fouille": "Fouille",
+        "intimidation": "Intimidation",
+        "marchandage": "Marchandage",
+        "parler_grec": "Parler grec",
+        "parler_aegyptien": "Parler aegyptien",
+        "parler_barbare": "Parler barbare",
+        "perception": "Perception",
+        "persuasion": "Persuasion",
+        "pistage": "Pistage",
+        "politique": "Politique",
+        "seduction": "Séduction",
+        "sensibilite": "Sensibilité",
+        "vigilance": "Vigilance",
+        "reseau": "Réseau"
+      }
     }
   },
-
   "TYPES": {
     "Actor": {
       "character": "Personnage",
-      "npc":       "PNJ"
+      "npc": "PNJ"
     },
     "Item": {
-      "arme":     "Arme",
-      "armure":   "Armure",
+      "arme": "Arme",
+      "armure": "Armure",
       "bouclier": "Bouclier",
-      "pouvoir":  "Pouvoir",
+      "pouvoir": "Pouvoir",
       "aptitude": "Aptitude",
-      "objet":    "Objet"
+      "objet": "Objet"
     }
   }
 }

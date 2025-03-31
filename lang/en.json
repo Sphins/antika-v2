@@ -10,11 +10,17 @@
     "PM": "Miracle Points",
     "Level": "Level",
     "Main": {
-  "droite": "Droite",
-  "ambidextre": "Ambidextre",
-  "gauche": "Gauche"
+  "droite": "Right",
+  "ambidextre": "Ambidextrous",
+  "gauche": "Left"
 },
-
+    "Tab": {
+      "Features": "Features",
+      "Description": "Description",
+      "Items": "Equipment",
+      "Spells": "Powers",
+      "Effects": "Effects"
+    },
 
     "Ability": {
       "Soma":     { "long": "Soma",     "abbr": "SOM" },
@@ -65,7 +71,7 @@
       },
       "Pouvoir": {
         "PMCost":     "Cost (PM)",
-        "FDBase":     "Base FD",
+        "FDBase":     "Base DC",
         "HubrisCost": "Hubris Cost",
         "Effect":     "Power Effect",
         "Duration":   "Duration",
@@ -88,7 +94,80 @@
       "Temporary": "Temporary Effects",
       "Passive":   "Passive Effects",
       "Inactive":  "Inactive Effects"
-    }
+    },
+    "capacity": {
+  "Soma": {
+    "arme_tranchante": "Slashing Weapon",
+    "arme_perforante": "Piercing Weapon",
+    "arme_contondante": "Bludgeoning Weapon",
+    "arme": "Weapon",
+    "arme_arc": "Bow",
+    "arme_fronde": "Sling",
+    "arme_de_jet": "Thrown Weapon",
+    "athletisme": "Athletics",
+    "bouclier": "Shield",
+    "cond_attelage": "Chariot Driving",
+    "endurance": "Endurance",
+    "equitation": "Riding",
+    "esquive": "Dodge",
+    "grimpe": "Climbing",
+    "natation": "Swimming",
+    "pugilat": "Brawling",
+    "souplesse": "Agility",
+    "vol_a_la_tire": "Pickpocket"
+  },
+  "Sophos": {
+    "agriculture": "Agriculture",
+    "alchimie": "Alchemy",
+    "artisanat_forge": "Crafting: Blacksmith",
+    "artisanat_charpentier": "Crafting: Carpenter",
+    "artisanat": "Crafting",
+    "epos_animaux": "Lore: Animals",
+    "epos_plantes": "Lore: Plants",
+    "epos_geographie": "Lore: Geography",
+    "epos_mythologie": "Lore: Mythology",
+    "epos_fabuleux": "Lore: Fabulous Creatures",
+    "epos_us_et_coutumes": "Lore: Customs & Traditions",
+    "gestion_patrimoine": "Estate Management",
+    "ingenierie": "Engineering",
+    "lire_ecrire_grec": "Read/Write Greek",
+    "lire_ecrire_barbare": "Read/Write Barbarian",
+    "lire_ecrire_aegyptien": "Read/Write Egyptian",
+    "medecine": "Medicine",
+    "navigation": "Navigation",
+    "occultisme": "Occultism",
+    "pieges": "Traps",
+    "resistance": "Resistance",
+    "strategie": "Strategy",
+    "survie": "Survival",
+    "theologie": "Theology"
+  },
+  "Symbiose": {
+    "arts_lyriques": "Performing Arts",
+    "commandement": "Leadership",
+    "comedie_danse": "Comedy/Dance",
+    "diplomatie": "Diplomacy",
+    "discretion": "Stealth",
+    "divination": "Divination",
+    "dressage": "Animal Handling",
+    "evaluation": "Appraisal",
+    "fouille": "Searching",
+    "intimidation": "Intimidation",
+    "marchandage": "Bargaining",
+    "parler_grec": "Speak Greek",
+    "parler_aegyptien": "Speak Egyptian",
+    "parler_barbare": "Speak Barbarian",
+    "perception": "Perception",
+    "persuasion": "Persuasion",
+    "pistage": "Tracking",
+    "politique": "Politics",
+    "seduction": "Seduction",
+    "sensibilite": "Sensitivity",
+    "vigilance": "Awareness",
+    "reseau": "Contacts"
+  }
+}
+
   },
 
   "TYPES": {

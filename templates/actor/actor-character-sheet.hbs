@@ -3,11 +3,22 @@
   {{> "systems/antika-v2/templates/actor/parts/actor-header.hbs"}}
   {{> "systems/antika-v2/templates/actor/parts/actor-tabs.hbs"}}
 
-  <section class="sheet-body">
+<section class="sheet-body">
+  <div class="tab" data-tab="features">
     {{> "systems/antika-v2/templates/actor/parts/actor-features.hbs"}}
+  </div>
+  <div class="tab" data-tab="description">
     {{> "systems/antika-v2/templates/actor/parts/actor-description.hbs"}}
+  </div>
+  <div class="tab" data-tab="items">
     {{> "systems/antika-v2/templates/actor/parts/actor-items.hbs"}}
+  </div>
+  <div class="tab" data-tab="spells">
     {{> "systems/antika-v2/templates/actor/parts/actor-spells.hbs"}}
+  </div>
+  <div class="tab" data-tab="effects">
     {{> "systems/antika-v2/templates/actor/parts/actor-effects.hbs"}}
-  </section>
+  </div>
+</section>
+
 </form>
