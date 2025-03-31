@@ -15,5 +15,8 @@ export const ANTIKA_V2 = {
     soma: 'ANTIKA_V2.Ability.Soma.abbr',
     sophos: 'ANTIKA_V2.Ability.Sophos.abbr',
     symbiose: 'ANTIKA_V2.Ability.Symbiose.abbr'
-  }
+  },
+
+  // 🌀 Configuration du système
+  NEMESIS_RULE: "perDie" // ou "perRoll"
 };

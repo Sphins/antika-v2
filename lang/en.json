@@ -1,5 +1,23 @@
 {
   "ANTIKA_V2": {
+    "Settings": {
+      "nemesisRule": {
+        "name": "Nemesis Gain Mode",
+        "hint": "Choose how Nemesis points are generated when rolling explosive dice (10s).",
+        "perDie": "1 point per die showing 10",
+        "perRoll": "1 point maximum per roll (even with multiple 10s)"
+      }
+    },
+
+"roll": {
+    "diceRolled": "Dice rolled",
+    "characteristic": "Characteristic ({group})",
+    "finalResult": "Final result",
+    "nemesisGainOne": "Nemesis point gained!",
+    "nemesisGainMany": "Nemesis points gained!",
+    "rollLabel": "Roll for",
+    "sophosForbidden": "Roll forbidden: Sophos-related skill without training."
+  },
     "LOCALIZATION_PREFIXES": {
       "abilities": "ANTIKA_V2.Ability",
       "items": "ANTIKA_V2.Item",

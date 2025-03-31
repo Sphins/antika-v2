@@ -1,5 +1,22 @@
 {
   "ANTIKA_V2": {
+    "Settings": {
+    "nemesisRule": {
+      "name": "Mode de gain de Némésis",
+      "hint": "Choisissez comment les points de Némésis sont générés lors d’un jet explosif (10).",
+      "perDie": "1 point par dé faisant 10",
+      "perRoll": "1 point maximum par jet (même si plusieurs 10)"
+    }
+  },
+"roll": {
+    "rollLabel": "Jet de",
+    "diceRolled": "Dés lancés",
+    "characteristic": "Caractéristique ({group})",
+    "finalResult": "Résultat final",
+    "nemesisGainOne": "point de Némésis gagné !",
+    "nemesisGainMany": "points de Némésis gagnés !",
+    "sophosForbidden": "Jet interdit : compétence liée à Sophos sans entraînement."
+  },
     "LOCALIZATION_PREFIXES": {
       "abilities": "ANTIKA_V2.Ability",
       "items": "ANTIKA_V2.Item",

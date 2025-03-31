@@ -29,6 +29,7 @@ Hooks.once('init', function () {
   // Add custom constants for configuration.
   CONFIG.ANTIKA_V2 = ANTIKA_V2;
 
+
   /**
    * Set an initiative formula for the system
    * @type {String}
@@ -76,6 +77,29 @@ Hooks.once('init', function () {
     makeDefault: true,
     label: 'ANTIKA_V2.SheetLabels.Item',
   });
+  // 🎲 Enregistrement du mode de gain de Némésis
+  game.settings.register("antika-v2", "nemesisRule", {
+    name: game.i18n.localize("ANTIKA_V2.Settings.nemesisRule.name"),
+    hint: game.i18n.localize("ANTIKA_V2.Settings.nemesisRule.hint"),
+    scope: "world",
+    config: true,
+    type: String,
+    default: "perDie",
+    choices: {
+      perDie: game.i18n.localize("ANTIKA_V2.Settings.nemesisRule.perDie"),
+      perRoll: game.i18n.localize("ANTIKA_V2.Settings.nemesisRule.perRoll"),
+    },
+    onChange: value => {
+      CONFIG.ANTIKA_V2.NEMESIS_RULE = value;
+      console.log(`🎲 Mode Némésis mis à jour : ${value}`);
+    }
+  });
+
+
+  // Ensuite, on charge la valeur et on l’injecte dans la config
+  CONFIG.ANTIKA_V2.NEMESIS_RULE = game.settings.get("antika-v2", "nemesisRule");
+
+
 
   // Preload Handlebars templates.
   return preloadHandlebarsTemplates();

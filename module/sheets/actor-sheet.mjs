@@ -232,79 +232,92 @@ export class AntikaV2ActorSheet extends ActorSheet {
 
     const element = event.currentTarget;
     const dataset = element.dataset;
+    const nemesisMode = CONFIG.ANTIKA_V2?.NEMESIS_RULE ?? "perDie";
 
     if (!dataset.rollCapacity) return;
 
     const [groupRaw, key] = dataset.rollCapacity.split(".");
-    const group = groupRaw.toLowerCase(); // On corrige la casse ici
-    const value = getProperty(this.actor.system.capacity, `${group}.${key}`) ?? 0;
-    const characteristic = getProperty(this.actor.system.attributes, `${group}.value`) ?? 0;
+    const group = groupRaw.toLowerCase();
+
+    const value = foundry.utils.getProperty(this.actor.system.capacity, `${groupRaw}.${key}`) ?? 0;
+    const characteristic = foundry.utils.getProperty(this.actor.system.attributes, `${group}.value`) ?? 0;
     const label = game.i18n.localize(`ANTIKA_V2.capacity.${groupRaw}.${key}`);
 
-    console.log(`🎲 Jet pour ${label}`);
-    console.log("  • Groupe :", group);
-    console.log("  • Compétence :", key);
-    console.log("  • Valeur compétence :", value);
-    console.log("  • Valeur caractéristique :", characteristic);
-
-    let diceResults = [];
-    let nemesisGain = 0;
+    let allDice = [];
+    let explosionCount = 0;
 
     if (value > 0) {
       for (let i = 0; i < value; i++) {
-        let roll = new Roll("1d10");
-        await roll.evaluate({ async: true });
-        let total = roll.total;
+        let rolls = [];
+        let total = 0;
+        let rerolling = true;
 
-        if (total === 10) {
-          nemesisGain++;
-          // relance tant qu’on fait 10
-          while (total === 10) {
-            const reroll = new Roll("1d10");
-            await reroll.evaluate({ async: true });
-            total = reroll.total;
-          }
+        while (rerolling) {
+          const roll = new Roll("1d10");
+          await roll.evaluate();
+          const result = roll.total;
+
+          rolls.push(result);
+          total += result;
+
+          if (result === 10) explosionCount++;
+          rerolling = (result === 10);
         }
 
-        diceResults.push(total);
+        allDice.push({ total, rolls });
       }
     } else {
-      // Si pas entraîné et lié à Sophos => interdit
       if (group === "sophos") {
-        ui.notifications.warn("Jet interdit : compétence liée à Sophos sans entraînement.");
+        ui.notifications.warn(game.i18n.localize("ANTIKA_V2.roll.sophosForbidden"));
         return;
       }
 
-      // Sinon jet à 1d5
       const roll = new Roll("1d5");
-      await roll.evaluate({ async: true });
-      diceResults.push(roll.total);
+      await roll.evaluate();
+      allDice.push({ total: roll.total, rolls: [roll.total] });
     }
 
-    const bestRaw = Math.max(...diceResults);
-    const finalResult = bestRaw + characteristic;
+    // Némésis
+    let nemesisGain = 0;
+    if (nemesisMode === "perDie") {
+      nemesisGain = explosionCount;
+    } else if (nemesisMode === "perRoll" && explosionCount > 0) {
+      nemesisGain = 1;
+    }
 
-    // Mise à jour de la Némésis si nécessaire
     if (nemesisGain > 0) {
-      const currentNemesis = getProperty(this.actor.system.resources.nemesis, "value") ?? 0;
+      const currentNemesis = foundry.utils.getProperty(this.actor.system.resources.nemesis, "value") ?? 0;
       await this.actor.update({ "system.resources.nemesis.value": currentNemesis + nemesisGain });
     }
 
+    // Calcul final
+    const best = allDice.reduce((a, b) => (a.total > b.total ? a : b));
+    const finalResult = best.total + characteristic;
+
+    // Affichage
+    const diceText = allDice.map(d => d.rolls.length > 1 ? `(${d.rolls.join(" + ")})` : `${d.rolls[0]}`).join(", ");
+    const bestText = best.rolls.length > 1 ? `(${best.rolls.join(" + ")})` : `${best.rolls[0]}`;
+
+    const abilityLabel = game.i18n.localize(CONFIG.ANTIKA_V2.abilities[group]);
+    let nemesisText = "";
+    if (nemesisGain === 1) {
+      nemesisText = `<p style="color: darkred;"><strong>+1</strong> ${game.i18n.localize("ANTIKA_V2.roll.nemesisGainOne")}</p>`;
+    } else if (nemesisGain > 1) {
+      nemesisText = `<p style="color: darkred;"><strong>+${nemesisGain}</strong> ${game.i18n.localize("ANTIKA_V2.roll.nemesisGainMany")}</p>`;
+    }
+
     const html = `
-      <p><strong>Dés lancés :</strong> ${diceResults.join(", ")}</p>
-      <p><strong>Caractéristique (${groupRaw}) :</strong> ${characteristic}</p>
-      <p><strong>Résultat final :</strong> ${bestRaw} + ${characteristic} = ${finalResult}</p>
-    `;
+    <p><strong>${game.i18n.localize("ANTIKA_V2.roll.diceRolled")} :</strong> ${diceText}</p>
+    <p><strong>${game.i18n.format("ANTIKA_V2.roll.characteristic", { group: game.i18n.localize(`ANTIKA_V2.Ability.${groupRaw}.long`) })} :</strong> ${characteristic}</p>
+    <p><strong>${game.i18n.localize("ANTIKA_V2.roll.finalResult")} :</strong> ${bestText} + ${characteristic} = <strong>${finalResult}</strong></p>
+    ${nemesisText}
+  `;
 
     ChatMessage.create({
       user: game.user.id,
       speaker: ChatMessage.getSpeaker({ actor: this.actor }),
-      flavor: `Jet de ${label}`,
+      flavor: `${game.i18n.localize("ANTIKA_V2.roll.rollLabel")} ${label}`,
       content: html,
     });
   }
-
-
-
-
 }
